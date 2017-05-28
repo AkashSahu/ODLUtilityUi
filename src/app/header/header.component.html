@@ -13,8 +13,9 @@
         <li class="active"><a href="#">Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" (click)="signuppopup.show()"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#" (click)="loginpopup.show()"><span class="glyphicon glyphicon-log-in" ></span> Login</a></li>
+        <li><a href="#" (click)="signuppopup.show()" *ngIf="loggedIn == false"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#" (click)="loginpopup.show()" *ngIf="loggedIn == false"><span class="glyphicon glyphicon-log-in" ></span> Login</a></li>
+        <li><a href="#" (click)="logout()" *ngIf="loggedIn"><span class="glyphicon glyphicon-log-out" ></span> Logout</a></li>
       </ul>
     </div>
   </div>
@@ -26,51 +27,60 @@
     <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
   </div>
   <div class="app-modal-body">
-    <form role="form">
+    <!-- BEGIN : LOGIN-FORM COMPONENT -->
+    <form (ngSubmit)="submit(form.value)" [formGroup]="form" novalidate>
+      <!-- BEGIN : ERROR OUTPUT -->
+      <app-alert *ngIf="errorShown" [message]="errorMessage"></app-alert>
+      <!-- END : ERROR OUTPUT -->
+
+      <!-- INPUT USERNAME -->
+      <div class="form-group" [ngClass]="{'has-warning':!form.controls['username'].valid && form.controls['username'].touched,
+                   'has-success': form.controls['username'].valid }">
+        <label class="sr-only" for="username">Username</label>
+
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+          <div class="input-group-addon input-icon-color">
+            <i class="fa fa-user"></i>
+          </div>
+          <input class="form-control" type="text" id="username" placeholder="Username" formControlName="username" />
+        </div>
+      </div>
+      <!-- END : INPUT USERNAME -->
+
+
+      <!-- INPUT PASSWORD -->
+      <div class="form-group" [ngClass]="{'has-warning':!form.controls['password'].valid && form.controls['password'].touched ,
+                   'has-success': form.controls['password'].valid }">
+        <label class="sr-only" for="password">Password</label>
+
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+          <div class="input-group-addon input-icon-color">
+            <i class="fa fa-lock"></i>
+          </div>
+          <input class="form-control" id="password" placeholder="Password" type="password" formControlName="password" />
+        </div>
+      </div>
+      <!-- END : INPUT PASSWORD -->
+
+
+      <!-- FORM BUTTONS -->
       <div class="form-group">
-        <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-        <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+        <button type="submit" class="col-xs-6 btn btn-default-darker" [disabled]="!form.valid">
+      Login
+    </button>
+        <button type="reset" class="col-xs-6 btn btn-default">
+      Clear
+    </button>
       </div>
-      <div class="form-group">
-        <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-        <input type="password" class="form-control" id="psw" placeholder="Enter password">
-      </div>
-      <div class="checkbox">
-        <label><input type="checkbox" value="" checked>Remember me</label>
-      </div>
-      <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+      <!--  END : FORM BUTTONS -->
+
     </form>
+    <!-- END : LOGIN-FORM COMPONENT -->
+
   </div>
   <div class="app-modal-footer">
-    <button type="submit" class="btn btn-danger btn-default pull-left"  (click)="loginpopup.hide()"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+    <button type="submit" class="btn btn-danger btn-default pull-left" (click)="loginpopup.hide()"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
     <p>Not a member? <a href="#" (click)="signuppopup.show()">Sign Up</a></p>
     <p>Forgot <a href="#">Password?</a></p>
-  </div>
-</app-login-modal>
-
-<app-login-modal #signuppopup>
-  <div class="app-modal-header">
-    <button type="button" class="close" data-dismiss="modal" (click)="signuppopup.hide()">&times;</button>
-    <h4><span class="glyphicon glyphicon-education"></span> Signup</h4>
-  </div>
-  <div class="app-modal-body">
-    <form role="form">
-      <div class="form-group">
-        <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-        <input type="text" class="form-control" id="usrname" placeholder="Enter email">
-      </div>
-      <div class="form-group">
-        <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-        <input type="password" class="form-control" id="psw" placeholder="Enter password">
-      </div>
-      <div class="form-group">
-        <label for="phone"><span class="glyphicon glyphicon-earphone"></span> Mobile Number</label>
-        <input type="number" class="form-control" id="mobilenumber" placeholder="Enter mobile number">
-      </div>
-      <div class="checkbox">
-        <label><input type="checkbox" value="" checked>Remember me</label>
-      </div>
-      <button type="submit" class="btn btn-success btn-block">Signup</button>
-    </form>
   </div>
 </app-login-modal>
