@@ -1,17 +1,15 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { ModalModule } from 'ngx-bootstrap';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
-  providers: [AuthenticationService]
+  selector: 'app-akatest',
+  templateUrl: './akatest.component.html',
+  styleUrls: ['./akatest.component.css']
 })
+export class AkatestComponent implements OnInit {
 
-export class HeaderComponent implements OnInit {
-  @ViewChild('authModal') popup;
   redirect: string;
   form: FormGroup;
   errorShown: boolean;
@@ -45,7 +43,6 @@ export class HeaderComponent implements OnInit {
         data => {
           console.log(Response),
           this.loggedIn=true;
-          this.popup.hide();
           
         },
         error => {
@@ -59,4 +56,5 @@ export class HeaderComponent implements OnInit {
     this.auth.doLogout();
     this.loggedIn=false;
   }
+
 }

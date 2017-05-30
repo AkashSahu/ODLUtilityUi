@@ -1,10 +1,4 @@
-.btn-block{
-    margin: auto;
-    width: 70%;
-    padding: 10px;
-  }
-
-  .tab-pane {
+.tab-pane {
     margin-top: 15px;
 }
 .sign-with {
@@ -46,6 +40,3 @@ div#OR {
   text-align: left;
   vertical-align: middle;
 }
-
-.mat-tab-body-wrapper[_ngcontent-c3]
-{position:relative;overflow:unset;display:flex;transition:height .5s cubic-bezier(.35,0,.25,1)}

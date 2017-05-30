@@ -13,74 +13,147 @@
         <li class="active"><a href="#">Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" (click)="signuppopup.show()" *ngIf="loggedIn == false"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#" (click)="loginpopup.show()" *ngIf="loggedIn == false"><span class="glyphicon glyphicon-log-in" ></span> Login</a></li>
+        <li><a href="#" (click)="authModal.show()" *ngIf="loggedIn == false"><span class="glyphicon glyphicon-log-in" ></span> Login / Sign Up</a></li>
         <li><a href="#" (click)="logout()" *ngIf="loggedIn"><span class="glyphicon glyphicon-log-out" ></span> Logout</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<app-login-modal #loginpopup>
-  <div class="app-modal-header">
-    <button type="button" class="close" data-dismiss="modal" (click)="loginpopup.hide()">&times;</button>
-    <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
-  </div>
-  <div class="app-modal-body">
-    <!-- BEGIN : LOGIN-FORM COMPONENT -->
-    <form (ngSubmit)="submit(form.value)" [formGroup]="form" novalidate>
-      <!-- BEGIN : ERROR OUTPUT -->
-      <app-alert *ngIf="errorShown" [message]="errorMessage"></app-alert>
-      <!-- END : ERROR OUTPUT -->
-
-      <!-- INPUT USERNAME -->
-      <div class="form-group" [ngClass]="{'has-warning':!form.controls['username'].valid && form.controls['username'].touched,
+<!-- New Signin Modal -->
+<div bsModal #authModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Login/Registration</h4>
+        <button type="button" class="close pull-right" (click)="authModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-8" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
+            <tabset #staticTabs>
+              <tab heading="Login">
+                <form (ngSubmit)="submit(form.value)" [formGroup]="form" novalidate class="form-horizontal">
+                  <!-- Alert -->
+                  <app-alert *ngIf="errorShown" [message]="errorMessage"></app-alert>
+                  <!-- Alert Ends -->
+                  <div class="form-group" [ngClass]="{'has-warning':!form.controls['username'].valid && form.controls['username'].touched,
                    'has-success': form.controls['username'].valid }">
-        <label class="sr-only" for="username">Username</label>
-
-        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-          <div class="input-group-addon input-icon-color">
-            <i class="fa fa-user"></i>
-          </div>
-          <input class="form-control" type="text" id="username" placeholder="Username" formControlName="username" />
-        </div>
-      </div>
-      <!-- END : INPUT USERNAME -->
-
-
-      <!-- INPUT PASSWORD -->
-      <div class="form-group" [ngClass]="{'has-warning':!form.controls['password'].valid && form.controls['password'].touched ,
+                    <label for="email" class="col-sm-2 control-label">
+                                        Email</label>
+                    <div class="col-sm-10">
+                      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon input-icon-color">
+                          <i class="fa fa-user"></i>
+                        </div>
+                        <input class="form-control" type="text" id="username" placeholder="Username" formControlName="username" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group" [ngClass]="{'has-warning':!form.controls['password'].valid && form.controls['password'].touched ,
                    'has-success': form.controls['password'].valid }">
-        <label class="sr-only" for="password">Password</label>
-
-        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-          <div class="input-group-addon input-icon-color">
-            <i class="fa fa-lock"></i>
+                    <label for="password" class="col-sm-2 control-label">
+                                        Password</label>
+                    <div class="col-sm-10">
+                      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon input-icon-color">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                        <input class="form-control" id="password" placeholder="Password" type="password" formControlName="password" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-10">
+                      <button type="submit" class="btn btn-primary btn-sm">
+                                            Submit</button>
+                      <a href="javascript:;">Forgot your password?</a>
+                    </div>
+                  </div>
+                </form>
+              </tab>
+              <tab heading="Registration">
+                <form role="form" class="form-horizontal">
+                  <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label">
+                                        Name</label>
+                    <div class="col-sm-10">
+                      <div class="row">
+                        <div class="col-md-3">
+                          <select class="form-control">
+                                                    <option>Mr.</option>
+                                                    <option>Ms.</option>
+                                                    <option>Mrs.</option>
+                                                </select>
+                        </div>
+                        <div class="col-md-9">
+                          <input type="text" class="form-control" placeholder="Name" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label">
+                                        Email</label>
+                    <div class="col-sm-10">
+                      <input type="email" class="form-control" id="email" placeholder="Email" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="mobile" class="col-sm-2 control-label">
+                                        Mobile</label>
+                    <div class="col-sm-10">
+                      <input type="email" class="form-control" id="mobile" placeholder="Mobile" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="password" class="col-sm-2 control-label">
+                                        Password</label>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" id="password" placeholder="Password" />
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-10">
+                      <button type="button" class="btn btn-primary btn-sm">
+                                            Save & Continue</button>
+                      <button type="button" class="btn btn-default btn-sm">
+                                            Cancel</button>
+                    </div>
+                  </div>
+                </form>
+              </tab>
+            </tabset>
+            <div id="OR" class="hidden-xs">
+              OR</div>
           </div>
-          <input class="form-control" id="password" placeholder="Password" type="password" formControlName="password" />
+          <div class="col-md-4">
+            <div class="row text-center sign-with">
+              <div class="col-md-12">
+                <h3>
+                  Sign in with</h3>
+              </div>
+              <div class="col-md-12">
+                <div class="btn-group btn-group-justified">
+                  <a href="#" class="btn btn-primary">Facebook</a> <a href="#" class="btn btn-danger">
+                                        Google</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <!-- END : INPUT PASSWORD -->
-
-
-      <!-- FORM BUTTONS -->
-      <div class="form-group">
-        <button type="submit" class="col-xs-6 btn btn-default-darker" [disabled]="!form.valid">
-      Login
-    </button>
-        <button type="reset" class="col-xs-6 btn btn-default">
-      Clear
-    </button>
+      <div class="app-modal-footer" style="margin: 10px;padding: 10px;border: 5px;">
+        
+        <a href="#">Need Help ?</a>
       </div>
-      <!--  END : FORM BUTTONS -->
-
-    </form>
-    <!-- END : LOGIN-FORM COMPONENT -->
-
+    </div>
   </div>
-  <div class="app-modal-footer">
-    <button type="submit" class="btn btn-danger btn-default pull-left" (click)="loginpopup.hide()"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-    <p>Not a member? <a href="#" (click)="signuppopup.show()">Sign Up</a></p>
-    <p>Forgot <a href="#">Password?</a></p>
-  </div>
-</app-login-modal>
+</div>
+<!-- Ends here -->

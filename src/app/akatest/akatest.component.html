@@ -1,0 +1,69 @@
+<!--Large modal-->
+<button class="btn btn-primary" (click)="lgModal.show()">Large modal</button>
+
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Large modal</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <md-tab-group>
+          <md-tab label="Login">
+
+            <form [formGroup]="form" novalidate class="form-horizontal">
+                  <!-- Alert -->
+                  <app-alert *ngIf="errorShown" [message]="errorMessage"></app-alert>
+                  <!-- Alert Ends -->
+                  <div class="form-group" [ngClass]="{'has-warning':!form.controls['username'].valid && form.controls['username'].touched,
+                   'has-success': form.controls['username'].valid }">
+                    <label for="email" class="col-sm-2 control-label">
+                                        Email</label>
+                    <div class="col-sm-10">
+                      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon input-icon-color">
+                          <i class="fa fa-user"></i>
+                        </div>
+                        <input class="form-control" type="text" id="username" placeholder="Username" formControlName="username" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group" [ngClass]="{'has-warning':!form.controls['password'].valid && form.controls['password'].touched ,
+                   'has-success': form.controls['password'].valid }">
+                    <label for="password" class="col-sm-2 control-label">
+                                        Password</label>
+                    <div class="col-sm-10">
+                      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon input-icon-color">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                        <input class="form-control" id="password" placeholder="Password" type="password" formControlName="password" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-10">
+                      <button type="submit" class="btn btn-primary btn-sm">
+                                            Submit</button>
+                      <button type="reset" class="btn btn-primary btn-sm">
+                                            Reset</button>
+                      <a href="javascript:;">Forgot your password?</a>
+                    </div>
+                  </div>
+                </form>
+
+
+
+
+          </md-tab>
+          <md-tab label="Registration">Content 2</md-tab>
+        </md-tab-group>
+      </div>
+    </div>
+  </div>
+</div>
