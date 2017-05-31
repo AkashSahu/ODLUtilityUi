@@ -1,4 +1,3 @@
-export enum Authority {
-  ROLE_USER,
-  ROLE_ADMIN
+export class Authority {
+  name : String;
 }

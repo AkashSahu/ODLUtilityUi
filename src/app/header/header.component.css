@@ -47,5 +47,6 @@ div#OR {
   vertical-align: middle;
 }
 
-.mat-tab-body-wrapper[_ngcontent-c3]
-{position:relative;overflow:unset;display:flex;transition:height .5s cubic-bezier(.35,0,.25,1)}
+.tabcontent{
+  padding: 30px;
+}

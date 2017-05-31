@@ -31,18 +31,19 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="row">
+        <div class="row" style="height: 300px;">
           <div class="col-md-8" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
             <tabset #staticTabs>
               <tab heading="Login">
+                <div class="tabcontent">
                 <form (ngSubmit)="submit(form.value)" [formGroup]="form" novalidate class="form-horizontal">
                   <!-- Alert -->
                   <app-alert *ngIf="errorShown" [message]="errorMessage"></app-alert>
                   <!-- Alert Ends -->
+
+
                   <div class="form-group" [ngClass]="{'has-warning':!form.controls['username'].valid && form.controls['username'].touched,
                    'has-success': form.controls['username'].valid }">
-                    <label for="email" class="col-sm-2 control-label">
-                                        Email</label>
                     <div class="col-sm-10">
                       <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon input-icon-color">
@@ -52,10 +53,76 @@
                       </div>
                     </div>
                   </div>
+
+
                   <div class="form-group" [ngClass]="{'has-warning':!form.controls['password'].valid && form.controls['password'].touched ,
                    'has-success': form.controls['password'].valid }">
-                    <label for="password" class="col-sm-2 control-label">
-                                        Password</label>
+                    <div class="col-sm-10">
+                      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon input-icon-color">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                        <input class="form-control" id="password" placeholder="Password" type="password" formControlName="password" />
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-10">
+                      <button type="submit" class="btn btn-primary btn-sm">
+                                            Submit</button>
+                      <a href="javascript:;">Forgot your password?</a>
+                    </div>
+                  </div>
+
+
+                </form>
+                </div>
+              </tab>
+              <tab heading="Registration">
+                <div class="tabcontent">
+                <form (ngSubmit)="register(registrationform.value)" [formGroup]="registrationform" novalidate class="form-horizontal">
+                  <!-- Alert -->
+                  <app-alert *ngIf="errorShown" [message]="errorMessage"></app-alert>
+                  <!-- Alert Ends -->
+                  <div class="form-group" [ngClass]="{'has-warning':!registrationform.controls['name'].valid && registrationform.controls['name'].touched,
+                   'has-success': registrationform.controls['name'].valid }">
+                    <div class="col-sm-10">
+                      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon input-icon-color">
+                          <i class="fa fa-smile-o"></i>
+                        </div>
+                        <input class="form-control" type="text" id="name" placeholder="Name" formControlName="name" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group" [ngClass]="{'has-warning':!registrationform.controls['email'].valid && registrationform.controls['email'].touched,
+                   'has-success': registrationform.controls['email'].valid }">
+                    <div class="col-sm-10">
+                      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon input-icon-color">
+                          <i class="fa fa-user"></i>
+                        </div>
+                        <input class="form-control" type="text" id="email" placeholder="Email" formControlName="email" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group" [ngClass]="{'has-warning':!registrationform.controls['phoneNumber'].valid && registrationform.controls['phoneNumber'].touched,
+                   'has-success': registrationform.controls['phoneNumber'].valid }">
+                    <div class="col-sm-10">
+                      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon input-icon-color">
+                          <i class="fa fa-phone"></i>
+                        </div>
+                        <input class="form-control" type="text" id="phoneNumber" placeholder="Mobile Number" formControlName="phoneNumber" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group" [ngClass]="{'has-warning':!registrationform.controls['password'].valid && registrationform.controls['password'].touched ,
+                   'has-success': registrationform.controls['password'].valid }">
                     <div class="col-sm-10">
                       <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                         <div class="input-group-addon input-icon-color">
@@ -70,64 +137,13 @@
                     </div>
                     <div class="col-sm-10">
                       <button type="submit" class="btn btn-primary btn-sm">
-                                            Submit</button>
-                      <a href="javascript:;">Forgot your password?</a>
-                    </div>
-                  </div>
-                </form>
-              </tab>
-              <tab heading="Registration">
-                <form role="form" class="form-horizontal">
-                  <div class="form-group">
-                    <label for="email" class="col-sm-2 control-label">
-                                        Name</label>
-                    <div class="col-sm-10">
-                      <div class="row">
-                        <div class="col-md-3">
-                          <select class="form-control">
-                                                    <option>Mr.</option>
-                                                    <option>Ms.</option>
-                                                    <option>Mrs.</option>
-                                                </select>
-                        </div>
-                        <div class="col-md-9">
-                          <input type="text" class="form-control" placeholder="Name" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="email" class="col-sm-2 control-label">
-                                        Email</label>
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="email" placeholder="Email" />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="mobile" class="col-sm-2 control-label">
-                                        Mobile</label>
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="mobile" placeholder="Mobile" />
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="password" class="col-sm-2 control-label">
-                                        Password</label>
-                    <div class="col-sm-10">
-                      <input type="password" class="form-control" id="password" placeholder="Password" />
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-2">
-                    </div>
-                    <div class="col-sm-10">
-                      <button type="button" class="btn btn-primary btn-sm">
                                             Save & Continue</button>
-                      <button type="button" class="btn btn-default btn-sm">
-                                            Cancel</button>
+                      <button type="reset" class="btn btn-primary btn-sm">
+                                            Reset</button>
                     </div>
                   </div>
                 </form>
+                </div>
               </tab>
             </tabset>
             <div id="OR" class="hidden-xs">
@@ -150,8 +166,6 @@
         </div>
       </div>
       <div class="app-modal-footer" style="margin: 10px;padding: 10px;border: 5px;">
-        
-        <a href="#">Need Help ?</a>
       </div>
     </div>
   </div>

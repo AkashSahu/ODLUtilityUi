@@ -3,12 +3,11 @@ import { Authority } from './authority.enum';
 export class User {
   
   constructor(
-    public username: string,
-    public firstname: string,
-    public lastname: string,
     public email: string,
-    public authorities: Array<Authority>,
-    public enabled: boolean
+    public name: string,
+    public phoneNumber: string,
+    public enabled: boolean,
+    public authorities: Array<Authority>
   ) {}
 
 }
