@@ -1,3 +1,4 @@
+import { RegisterService } from './services/signup/register.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -8,10 +9,8 @@ import { MaterialModule, MdTabsModule } from '@angular/material';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { LoginModalComponent } from './login-modal/login-modal.component';
 import { AlertComponent } from './core/alert/alert.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DialogueboxComponent } from './dialoguebox/dialoguebox.component';
 import { ModalModule, TabsModule } from 'ngx-bootstrap';
 import { AkatestComponent } from './akatest/akatest.component';
 import 'hammerjs';
@@ -21,9 +20,7 @@ import 'hammerjs';
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginModalComponent,
     AlertComponent,
-    DialogueboxComponent,
     AkatestComponent
   ],
   imports: [
@@ -39,8 +36,7 @@ import 'hammerjs';
     TabsModule.forRoot(),
     MdTabsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent],
-  entryComponents: [DialogueboxComponent]
+  providers: [RegisterService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
