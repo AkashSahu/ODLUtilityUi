@@ -50,3 +50,10 @@ div#OR {
 .tabcontent{
   padding: 30px;
 }
+
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 150px;
+    height: 150px;
+    padding-top: 0;
+}
