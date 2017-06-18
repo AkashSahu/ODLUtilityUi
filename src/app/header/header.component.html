@@ -15,9 +15,13 @@
 
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="nav navbar-nav col-md-9 pull-right">
-         
-          <li><button class="btn btn-primary navbar-btn" (click)="logout()" *ngIf="loggedIn"><span class="glyphicon glyphicon-log-out" ></span> Logout</button></li>
-          <li><button class="btn btn-md  navbar-btn" (click)="authModal.show()" *ngIf="loggedIn == false"><span class="glyphicon glyphicon-log-in" ></span> Login / Sign Up</button></li>
+          <li class="active"><a href="home"><i class="fa fa-home"></i> Home</a></li>
+          <li><a href="#services"><i class="fa fa-cogs"></i> Services</a></li>
+          <li><a href="#portfolio"><i class="fa fa-flask"></i> Portfolio</a></li>
+          <li><a href="#clients"><i class="fa fa-puzzle-piece"></i> Clients</a></li>
+          <li><a href="#about"><i class="fa fa-info"></i> About</a></li>
+          <li><a href="javascript:void(0)" (click)="authModal.show()" *ngIf="loggedIn"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
+          <li><a href="javascript:void(0)" (click)="authModal.show()" *ngIf="loggedIn == false"><i class="glyphicon glyphicon-log-in"></i> Login / Sign Up</a></li>
         </ul>
         
       </div>
