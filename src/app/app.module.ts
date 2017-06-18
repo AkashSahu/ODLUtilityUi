@@ -1,3 +1,4 @@
+import { TestserviceService } from './services/testservice/testservice.service';
 import { RegisterService } from './services/signup/register.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -13,7 +14,25 @@ import { AlertComponent } from './core/alert/alert.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule, TabsModule } from 'ngx-bootstrap';
 import { AkatestComponent } from './akatest/akatest.component';
+import { RouterModule, Routes } from '@angular/router';
 import 'hammerjs';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HomeComponent } from './home/home.component';
+import { CarouselModule } from 'ngx-bootstrap';
+import { FooterComponent } from './footer/footer.component';
+
+
+
+const appRoutes: Routes = [
+  { path: 'test', component: AkatestComponent },
+  { path: 'home', component: HomeComponent },
+  { path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
+  { path: '**', component: PageNotFoundComponent }
+];
+
 
 
 @NgModule({
@@ -21,10 +40,14 @@ import 'hammerjs';
     AppComponent,
     HeaderComponent,
     AlertComponent,
-    AkatestComponent
+    AkatestComponent,
+    PageNotFoundComponent,
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     AuthenticationModule,
+    CarouselModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -34,9 +57,10 @@ import 'hammerjs';
     BrowserAnimationsModule,
     ModalModule.forRoot(),
     TabsModule.forRoot(),
-    MdTabsModule
+    MdTabsModule,
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [RegisterService],
+  providers: [RegisterService,TestserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

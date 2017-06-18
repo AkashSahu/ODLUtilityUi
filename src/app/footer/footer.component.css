@@ -1,0 +1,64 @@
+#contact {
+  background: #f1f1f1;
+}
+#contact ::-webkit-input-placeholder {
+  color: #ecf0f1;
+}
+#contact :-moz-placeholder {
+  color: #ecf0f1;
+}
+#contact ::-moz-placeholder {
+  color: #ecf0f1;
+}
+#contact :-ms-input-placeholder {
+  color: #ecf0f1;
+}
+#contact .social i {
+  color: #fff;
+  padding: 10px;
+  margin-right: 5px;
+  width: 50px;
+  height: 50px;
+  vertical-align: middle;
+  background: #34495e;
+}
+#contact .social .social-links a:hover {
+  color: #fff;
+}
+#contact .social .fa-facebook:hover {
+  background: #3b5998;
+  color: #fff;
+}
+#contact .social .fa-twitter:hover {
+  background: #00CAFB;
+  color: #fff;
+}
+#contact .social .fa-google-plus:hover {
+  background: #D23A1D;
+  color: #fff;
+}
+#contact .social .fa-linkedin:hover {
+  background: #007bb6;
+  color: #fff;
+}
+#contact .social .fa-dribbble:hover {
+  background: #ea4c89;
+  color: #fff;
+}
+#contact .social .fa-github:hover {
+  background: #171515;
+  color: #fff;
+}
+#contact .contact-info {
+  margin: 40px 0;
+}
+#contact .contact-info p {
+  font-size: 20px;
+}
+#contact .contact-form .form-control {
+  box-shadow: none;
+  font-size: 17px;
+  margin-bottom: 20px;
+  border-radius: 0;
+  border: none;
+}
