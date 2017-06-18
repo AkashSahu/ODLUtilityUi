@@ -20,6 +20,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HomeComponent } from './home/home.component';
 import { CarouselModule } from 'ngx-bootstrap';
 import { FooterComponent } from './footer/footer.component';
+import {Ng2PageScrollModule} from 'ng2-page-scroll';
 
 
 
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
   imports: [
     AuthenticationModule,
     CarouselModule.forRoot(),
+    Ng2PageScrollModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpModule,

@@ -58,9 +58,9 @@ div#OR {
   color: #d1d1d1;
 }
 .navbar-default {
-  border: black;
+  border: none;
   border-radius: 0;
-  background:black;
+  background: rgba(0, 0, 0, 0.2);
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,

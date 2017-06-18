@@ -1,4 +1,5 @@
 <!-- Nav Menu Section -->
+
 <div class="logo-menu">
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation" data-spy="affix" data-offset-top="50">
     <div class="container">
@@ -10,28 +11,29 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="#home"><i class="fa fa-briefcase"></i> Mock Rounds</a>
+        <a class="navbar-brand" href="#home"><i class="fa fa-briefcase"></i> MockRounds</a>
       </div>
 
       <div class="collapse navbar-collapse" id="navbar">
-        <ul class="nav navbar-nav col-md-9 pull-right">
-          <li class="active"><a href="home"><i class="fa fa-home"></i> Home</a></li>
-          <li><a href="#services"><i class="fa fa-cogs"></i> Services</a></li>
-          <li><a href="#portfolio"><i class="fa fa-flask"></i> Portfolio</a></li>
-          <li><a href="#clients"><i class="fa fa-puzzle-piece"></i> Clients</a></li>
-          <li><a href="#about"><i class="fa fa-info"></i> About</a></li>
-          <li><a href="javascript:void(0)" (click)="authModal.show()" *ngIf="loggedIn"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
-          <li><a href="javascript:void(0)" (click)="authModal.show()" *ngIf="loggedIn == false"><i class="glyphicon glyphicon-log-in"></i> Login / Sign Up</a></li>
+        <ul class="nav navbar-nav ">
+          <li class="active"><a pageScroll href="#hero-area"><i class="fa fa-home"></i> Home</a></li>
+          <li><a pageScroll href="#services"><i class="fa fa-cogs"></i> Services</a></li>
+          <li><a pageScroll href="#portfolio"><i class="fa fa-flask"></i> Portfolio</a></li>
+          <li><a pageScroll href="#clients"><i class="fa fa-puzzle-piece"></i> Clients</a></li>
+          <li><a pageScroll href="#about"><i class="fa fa-info"></i> About</a></li>
+          <li><a pageScroll href="#contact"><i class="fa fa-info"></i> Contact Us</a></li>
+
         </ul>
-        
+        <ul class="nav navbar-nav navbar-right">
+          <li><a pageScroll href="javascript:void(0)" (click)="authModal.show()" *ngIf="loggedIn"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
+          <li><a pageScroll href="javascript:void(0)" (click)="authModal.show()" *ngIf="loggedIn == false"><i class="glyphicon glyphicon-log-in"></i> Login / Sign Up</a></li>
+        </ul>
       </div>
     </div>
   </nav>
 </div>
+
 <!-- Nav Menu Section End -->
-
-
-
 <!-- New Signin Modal -->
 <div bsModal #authModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
