@@ -303,3 +303,42 @@ h5 {
   opacity: 1;
   right: 0;
 }
+
+input[type=text] {
+    width: 300px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 50%;
+}
+
+.search-button {
+    height: 50px;
+    
+}
+
+.search-button {
+    display: inline-block;
+    font-size: 11px;
+    line-height: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #4d4d4d;
+    border: 2px solid #1ebef0;
+    background: #1ebef0;
+    
+    text-decoration: none;
+    width: 50px;
+    border-radius: 2px;
+}
+
