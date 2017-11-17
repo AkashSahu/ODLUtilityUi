@@ -75,7 +75,9 @@ export class CrudService<T, ID> implements CrudOperations<T, ID> {
   protected extractData(res: Response) {
     console.log("Extracting data");
     //let body = res.json() || '';
-    return res;
+    //return<string[]>res.json();
+    return res.json()  || '';
+    //return res;
   }
 
   protected handleError(error: Response | any) {

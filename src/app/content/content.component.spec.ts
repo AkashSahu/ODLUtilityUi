@@ -1,21 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MaterialModule, MdTab } from '@angular/material';
 
-import { AkatestComponent } from './akatest.component';
+import { ContentComponent } from './content.component';
 
-describe('AkatestComponent', () => {
-  let component: AkatestComponent;
-  let fixture: ComponentFixture<AkatestComponent>;
+describe('ContentComponent', () => {
+  let component: ContentComponent;
+  let fixture: ComponentFixture<ContentComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AkatestComponent ]
+      declarations: [ ContentComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AkatestComponent);
+    fixture = TestBed.createComponent(ContentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

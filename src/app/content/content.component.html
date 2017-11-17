@@ -1,0 +1,52 @@
+<section id="hero" class="section" style="padding-top: 50px;">
+  <div class="container">
+    <h2 style="color: darkcyan">Metrics Processing</h2>
+    <div class="row">
+      <h3>Absolute path to directory of counters : </h3>
+      <form (ngSubmit)="submit(form.value)" [formGroup]="form" novalidate class="form-horizontal">
+        <!-- Alert -->
+        <app-alert *ngIf="errorShown" [message]="errorMessage"></app-alert>
+        <!-- Alert Ends -->
+        <div class="form-group" [ngClass]="{'has-warning':!form.controls['counterPath'].valid && form.controls['counterPath'].touched,
+   'has-success': form.controls['counterPath'].valid }" style="width: 800px">
+          <div class="col-sm-10">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-addon input-icon-color">
+                <i class="fa fa-folder"></i>
+              </div>
+              <input class="form-control" type="text" id="counterPath" placeholder="Path .." formControlName="counterPath" />
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm" [disabled]="!form.valid">
+          Submit</button>
+        <button type="button" class="btn btn-primary btn-sm" (click)="onClickClear()">
+          Clear</button>
+      </form>
+      <hr>
+      <div *ngIf="dataIsPresent">
+        <div class="card card-block panel panel-default panel-body">
+          <div class="row">
+
+            <div class="col-md-12">
+              <h3> Metrics Data </h3>
+            </div>
+
+            <div class="col-md-4">
+              <input *ngIf="config.filtering" placeholder="Filter all columns" [ngTableFiltering]="config.filtering" class="form-control"
+                (tableChanged)="onChangeTable(config)" />
+            </div>
+          </div>
+          <br>
+          <ng-table [config]="config" (tableChanged)="onChangeTable(config)" (cellClicked)="onCellClick($event)" [rows]="rows" [columns]="columns">
+          </ng-table>
+          <pagination *ngIf="config.paging" class="pagination-sm" [(ngModel)]="page" [totalItems]="length" [itemsPerPage]="itemsPerPage"
+            [maxSize]="maxSize" [boundaryLinks]="true" [rotate]="false" (pageChanged)="onChangeTable(config, $event)" (numPages)="numPages = $event">
+          </pagination>
+          <pre *ngIf="config.paging" class="card card-block card-header">Page: {{page}} / {{numPages}}</pre>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
